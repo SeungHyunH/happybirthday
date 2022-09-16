@@ -4,7 +4,6 @@ import styled from 'styled-components'
 const Main = () => {
   return (
     <Wrap>
-
     </Wrap>
   )
 }
@@ -16,11 +15,7 @@ const Wrap = styled.div`
   background-image: url('/birthday_bg.jpg');
   background-repeat : no-repeat;
   background-position: center;
-`
-
-const Background = styled.img`
-  height: 100vh;
-
+  background-size : 100vw;
 `
 
 export default Main
