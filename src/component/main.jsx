@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Main = () => {
   return (
     <Wrap>
+      <Cake src='birthday_cake.png'></Cake>
     </Wrap>
   )
 }
@@ -16,6 +17,15 @@ const Wrap = styled.div`
   background-repeat : no-repeat;
   background-position: center;
   background-size : 100vw;
+`
+
+const Cake = styled.img`
+  width: 50%;
+  padding-left: 25%;
+  margin-top: 130%;
+  :active{
+    filter: brightness(50%);
+  }
 `
 
 export default Main
