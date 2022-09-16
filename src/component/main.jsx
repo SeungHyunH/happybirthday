@@ -4,6 +4,14 @@ import styled, {keyframes} from 'styled-components'
 const Main = () => {
   const [letterHidden,setLetterHidden] = useState(true);
   const letter = useRef();
+  const [letterText,setLetterText] = useState('');
+
+  useEffect(()=>{
+    fetch('letter.txt')
+    .then((r)=>r.text())
+    .then(text=>setLetterText(text));
+  },[]);
+
   useEffect(()=>{
     if(letterHidden){
       setTimeout(()=>letter.current.style.display = 'none',250);
@@ -14,12 +22,28 @@ const Main = () => {
   return (
     <Wrap>
       <Cake src='birthday_cake.png' onClick={()=>setLetterHidden(false)}></Cake>
-      <Letter ref={letter} isHidden = {letterHidden}>
+      <LetterWrap ref={letter} isHidden = {letterHidden}>
         <Close src='close.svg' onClick={()=>setLetterHidden(true)}/>
-      </Letter>
+        <Letter>{letterText}</Letter>
+        <img src='profile.jpg' width='100%' alt=''/>
+      </LetterWrap>
     </Wrap>
   )
 }
+
+const Letter = styled.div`
+  padding : 10%;
+  padding-bottom: 0;
+  width: 80%;
+  height: 90%;
+  word-break: break-all;
+  white-space: pre-line;
+  line-height: 3rem;
+  font-size: 2rem;
+  text-decoration: underline;
+  text-underline-position: under;
+  font-family: "godoMaum";
+`
 
 const Wrap = styled.div`
   width: 100vw;
@@ -59,12 +83,12 @@ const LetterHide= keyframes`
 `;
 
 
-const Letter = styled.div`
+const LetterWrap = styled.div`
   position : absolute;
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: pink;
+  background-color: #F8F7F3;
   display: none;
   animation-duration: 0.25s;
   animation-timing-function: ${(props)=>props.isHidden ? 'ease-in' : 'ease-out'};
