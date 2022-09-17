@@ -32,12 +32,13 @@ const Main = () => {
 }
 
 const Letter = styled.div`
+  background-color: #F8F7F3;
   padding : 10%;
   padding-bottom: 0;
   width: 80%;
-  height: 90%;
+  height: auto;
   word-break: break-all;
-  white-space: pre-line;
+  white-space: pre-wrap;
   line-height: 3rem;
   font-size: 2rem;
   text-decoration: underline;
@@ -98,9 +99,10 @@ const LetterWrap = styled.div`
 `
 
 const Close = styled.img`
+  width: 10%;
   position: absolute;
   top: 0;
-  left: 85vw;
+  left: 90%;
 `
 
 export default Main
